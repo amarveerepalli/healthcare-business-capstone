@@ -1,0 +1,8 @@
+column,dtype,null_count,null_pct,unique
+patient_id,int64,0,0.0,5000
+age,int64,0,0.0,90
+gender,str,0,0.0,2
+city,str,0,0.0,6
+insurance_provider,str,0,0.0,4
+chronic_flag,int64,0,0.0,2
+registration_date,datetime64[us],0,0.0,366

@@ -1,0 +1,7 @@
+department,total_visits,avg_los,high_risk_pct
+General,4228,19.43,19.84
+ER,4220,19.53,20.66
+Neurology,4165,19.72,20.31
+Orthopedics,4164,19.66,20.22
+Cardiology,4159,19.6,18.99
+ICU,4064,19.36,20.79

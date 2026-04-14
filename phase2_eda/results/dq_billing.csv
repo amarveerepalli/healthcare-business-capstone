@@ -1,0 +1,8 @@
+column,dtype,null_count,null_pct,unique
+bill_id,int64,0,0.0,25000
+visit_id,int64,0,0.0,25000
+billed_amount,float64,0,0.0,24695
+approved_amount,float64,1318,5.27,19882
+claim_status,str,0,0.0,3
+payment_days,float64,790,3.16,53
+billing_date,datetime64[us],0,0.0,366

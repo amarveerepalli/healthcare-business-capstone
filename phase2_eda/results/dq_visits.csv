@@ -1,0 +1,9 @@
+column,dtype,null_count,null_pct,unique
+visit_id,int64,0,0.0,25000
+patient_id,int64,0,0.0,4967
+visit_date,datetime64[us],0,0.0,366
+department,str,0,0.0,6
+visit_type,str,0,0.0,3
+length_of_stay_hours,float64,0,0.0,4935
+risk_score,str,0,0.0,3
+doctor_id,int64,0,0.0,101
