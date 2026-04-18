@@ -1,0 +1,120 @@
+{
+  "model_card_version": "1.1",
+  "generated_at": "2026-04-19T00:13:53.262259",
+  "model_a": {
+    "name": "Visit Risk Classifier",
+    "algorithm": "Random Forest (Tuned)",
+    "target": "risk_score",
+    "classes": [
+      "High",
+      "Low",
+      "Medium"
+    ],
+    "train_size": 20000,
+    "test_size": 5000,
+    "split_method": "Time-based (80/20)",
+    "algorithm_note": "Logistic Regression used as baseline for comparison only \u2014 not deployed",
+    "imbalance_strategy": "class_weight=balanced",
+    "best_params": {},
+    "cv_f1": "N/A",
+    "test_accuracy": 0.3226,
+    "test_macro_f1": 0.3119,
+    "primary_metric": "High-Risk Recall: 0.2835",
+    "primary_business_metric": "Recall for High-Risk class (target \u2265 0.70)",
+    "input_features": [
+      "age",
+      "gender",
+      "city",
+      "chronic_flag",
+      "department",
+      "visit_type",
+      "length_of_stay_hours",
+      "visit_month",
+      "visit_dayofweek",
+      "is_weekend",
+      "patient_visit_freq",
+      "patient_avg_los",
+      "dept_avg_los",
+      "los_vs_dept_avg",
+      "days_since_registration"
+    ],
+    "limitations": [
+      "Does not incorporate real-time clinical vitals",
+      "Performance may degrade for rare departments with low training data",
+      "Requires retraining every quarter with fresh visit data"
+    ],
+    "assumptions": [
+      "risk_score labels are accurate ground truth",
+      "Patient demographics remain stable over deployment window"
+    ],
+    "imbalance_recommendations": [
+      "Tune class weights: class_weight={High:3, Medium:1, Low:1}",
+      "Engineer interaction features: chronic_x_los, los_vs_dept_avg",
+      "Apply SMOTE if High-Risk Recall falls below 0.65"
+    ]
+  },
+  "model_b": {
+    "name": "Insurance Claim Outcome Classifier",
+    "algorithm": "Random Forest (Tuned)",
+    "target": "claim_status",
+    "classes": [
+      "Paid",
+      "Pending",
+      "Rejected"
+    ],
+    "train_size": 20000,
+    "test_size": 5000,
+    "split_method": "Time-based (80/20)",
+    "imbalance_strategy": "Random oversampling + class_weight=balanced",
+    "best_params": {},
+    "cv_f1": "N/A",
+    "test_accuracy": 0.379,
+    "test_macro_f1": 0.3513,
+    "primary_metric": "Rejected Recall: 0.7637",
+    "primary_business_metric": "Recall for Rejected class (target \u2265 0.70)",
+    "input_features": [
+      "age",
+      "gender",
+      "city",
+      "chronic_flag",
+      "department",
+      "visit_type",
+      "length_of_stay_hours",
+      "billed_amount",
+      "log_billed_amount",
+      "insurance_provider",
+      "insurer_rejection_rate",
+      "visit_month",
+      "visit_dayofweek",
+      "is_weekend",
+      "patient_visit_freq",
+      "bill_per_los_hour",
+      "payment_days_missing"
+    ],
+    "data_leakage_note": "approved_amount excluded \u2014 available only post-settlement",
+    "limitations": [
+      "Does not encode insurer-specific contract rules",
+      "Pending class performance is inherently uncertain",
+      "New insurers not seen in training will use OHE unknown handling"
+    ],
+    "assumptions": [
+      "Billing patterns remain consistent across quarters",
+      "claim_status is final (no re-adjudication after labeling)"
+    ],
+    "imbalance_recommendations": [
+      "Tune class weights: class_weight={Rejected:3, Pending:2, Paid:1}",
+      "Engineer bill_amount_vs_dept_avg interaction feature",
+      "Apply SMOTE or undersampling if Rejected Recall falls below 0.65"
+    ]
+  },
+  "retraining_strategy": {
+    "trigger": "Quarterly or when prediction drift > 5% on monitoring dashboard",
+    "process": "Retrain on rolling 12-month window of visit + billing data",
+    "validation": "Shadow mode for 2 weeks before promotion to production"
+  },
+  "governance": {
+    "model_owner": "Hospital Analytics Team",
+    "review_cycle": "Quarterly",
+    "audit_log": "All predictions logged with timestamp, model version, input hash"
+  }
+}

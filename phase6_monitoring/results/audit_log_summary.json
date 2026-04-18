@@ -1,0 +1,12 @@
+{
+  "total_predictions": 2,
+  "by_endpoint": {
+    "/predict/risk": 1,
+    "/predict/claim": 1
+  },
+  "by_model_version": {
+    "1.0.0": 2
+  },
+  "first_prediction": "2026-04-19 00:14:07,122",
+  "last_prediction": "2026-04-19 00:14:07,122"
+}

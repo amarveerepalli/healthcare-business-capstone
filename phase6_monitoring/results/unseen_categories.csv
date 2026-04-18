@@ -1,0 +1,6 @@
+column,train_categories,test_categories,unseen_in_test,unseen_values
+gender,2,2,0,[]
+visit_type,3,3,0,[]
+department,6,6,0,[]
+insurance_provider,4,4,0,[]
+city,6,6,0,[]

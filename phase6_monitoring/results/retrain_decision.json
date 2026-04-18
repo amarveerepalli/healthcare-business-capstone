@@ -1,0 +1,9 @@
+{
+  "generated_at": "2026-04-19T00:14:13.837969",
+  "retrain_required": true,
+  "watch_features": [],
+  "retrain_features": [
+    "days_since_registration"
+  ],
+  "recommendation": "RETRAIN"
+}

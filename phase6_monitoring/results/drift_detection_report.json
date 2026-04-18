@@ -1,0 +1,116 @@
+{
+  "report_title": "Feature Drift Detection Report",
+  "generated_at": "2026-04-19T00:14:13.555642",
+  "methodology": "Population Stability Index (PSI) \u2014 Train vs Test split",
+  "thresholds": {
+    "stable": "< 0.10",
+    "watch": "0.10 \u2013 0.20",
+    "retrain": "> 0.20"
+  },
+  "summary": {
+    "total_features_checked": 12,
+    "stable": 11,
+    "watch": 0,
+    "retrain": 1
+  },
+  "feature_results": [
+    {
+      "feature": "days_since_registration",
+      "psi": 1.2785,
+      "drift_flag": "YES",
+      "train_mean": 40.0188,
+      "test_mean": 150.1544,
+      "mean_shift_pct": 275.21
+    },
+    {
+      "feature": "payment_days",
+      "psi": 0.004,
+      "drift_flag": "NO",
+      "train_mean": 13.0496,
+      "test_mean": 13.0422,
+      "mean_shift_pct": -0.06
+    },
+    {
+      "feature": "billed_amount",
+      "psi": 0.003,
+      "drift_flag": "NO",
+      "train_mean": 20794.5166,
+      "test_mean": 21175.721,
+      "mean_shift_pct": 1.83
+    },
+    {
+      "feature": "log_billed_amount",
+      "psi": 0.003,
+      "drift_flag": "NO",
+      "train_mean": 9.6741,
+      "test_mean": 9.6844,
+      "mean_shift_pct": 0.11
+    },
+    {
+      "feature": "age",
+      "psi": 0.0021,
+      "drift_flag": "NO",
+      "train_mean": 44.693,
+      "test_mean": 45.0698,
+      "mean_shift_pct": 0.84
+    },
+    {
+      "feature": "length_of_stay_hours",
+      "psi": 0.0021,
+      "drift_flag": "NO",
+      "train_mean": 19.5827,
+      "test_mean": 19.427,
+      "mean_shift_pct": -0.8
+    },
+    {
+      "feature": "los_vs_dept_avg",
+      "psi": 0.002,
+      "drift_flag": "NO",
+      "train_mean": 1.0016,
+      "test_mean": 0.9937,
+      "mean_shift_pct": -0.79
+    },
+    {
+      "feature": "bill_per_los_hour",
+      "psi": 0.002,
+      "drift_flag": "NO",
+      "train_mean": 2760.6444,
+      "test_mean": 2610.5792,
+      "mean_shift_pct": -5.44
+    },
+    {
+      "feature": "dept_avg_los",
+      "psi": 0.0014,
+      "drift_flag": "NO",
+      "train_mean": 19.5521,
+      "test_mean": 19.5493,
+      "mean_shift_pct": -0.01
+    },
+    {
+      "feature": "insurer_rejection_rate",
+      "psi": 0.0013,
+      "drift_flag": "NO",
+      "train_mean": 0.1519,
+      "test_mean": 0.1519,
+      "mean_shift_pct": 0.04
+    },
+    {
+      "feature": "patient_avg_los",
+      "psi": 0.001,
+      "drift_flag": "NO",
+      "train_mean": 19.5385,
+      "test_mean": 19.6038,
+      "mean_shift_pct": 0.33
+    },
+    {
+      "feature": "patient_visit_freq",
+      "psi": 0.0004,
+      "drift_flag": "NO",
+      "train_mean": 5.9619,
+      "test_mean": 5.9568,
+      "mean_shift_pct": -0.09
+    }
+  ],
+  "interpretation": "PSI < 0.10: Feature distribution is stable \u2014 no action required. PSI 0.10\u20130.20: Distribution shifting \u2014 investigate data pipeline. PSI > 0.20: Significant drift \u2014 schedule model retraining within 30 days.",
+  "recommended_action": "RETRAIN"
+}

@@ -1,0 +1,11 @@
+{
+  "model_a": {
+    "top_features": [],
+    "interpretation": "LOS-related features (length_of_stay_hours, los_vs_dept_avg, patient_avg_los) are the strongest predictors of visit risk. Chronic flag and department are next most important, confirming that clinical complexity drives risk scores."
+  },
+  "model_b": {
+    "top_features": [],
+    "interpretation": "insurer_rejection_rate is the dominant predictor for claim outcome, followed by billed_amount and bill_per_los_hour. This confirms that insurer behaviour and billing intensity are the primary drivers of claim rejection."
+  },
+  "generated_at": "2026-04-19T00:13:53.242958"
+}

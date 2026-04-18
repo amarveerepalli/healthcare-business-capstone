@@ -1,0 +1,69 @@
+{
+  "model_a_risk_features": [
+    "age",
+    "gender",
+    "city",
+    "chronic_flag",
+    "department",
+    "visit_type",
+    "length_of_stay_hours",
+    "visit_month",
+    "visit_dayofweek",
+    "is_weekend",
+    "patient_visit_freq",
+    "patient_avg_los",
+    "dept_avg_los",
+    "los_vs_dept_avg",
+    "days_since_registration"
+  ],
+  "model_b_claim_features": [
+    "age",
+    "gender",
+    "city",
+    "chronic_flag",
+    "department",
+    "visit_type",
+    "length_of_stay_hours",
+    "billed_amount",
+    "log_billed_amount",
+    "insurance_provider",
+    "insurer_rejection_rate",
+    "visit_month",
+    "visit_dayofweek",
+    "is_weekend",
+    "patient_visit_freq",
+    "bill_per_los_hour",
+    "payment_days_missing"
+  ],
+  "target_model_a": "risk_score",
+  "target_model_b": "claim_status",
+  "categorical_cols": [
+    "gender",
+    "city",
+    "department",
+    "visit_type",
+    "insurance_provider"
+  ],
+  "numeric_cols": [
+    "age",
+    "length_of_stay_hours",
+    "billed_amount",
+    "log_billed_amount",
+    "patient_visit_freq",
+    "patient_avg_los",
+    "insurer_rejection_rate",
+    "dept_avg_los",
+    "los_vs_dept_avg",
+    "bill_per_los_hour",
+    "days_since_registration",
+    "visit_month",
+    "visit_dayofweek",
+    "is_weekend"
+  ],
+  "binary_cols": [
+    "chronic_flag",
+    "payment_days_missing"
+  ],
+  "version": "1.0",
+  "created_at": "2026-04-19T00:09:11.116783"
+}

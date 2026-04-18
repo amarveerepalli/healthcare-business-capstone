@@ -1,0 +1,43 @@
+{
+  "input_validation_rules": {
+    "age": {
+      "min": 1,
+      "max": 90
+    },
+    "length_of_stay_hours": {
+      "min": 0,
+      "max": 66.83044000000008
+    },
+    "billed_amount": {
+      "min": 0,
+      "max": 70257.13250000011
+    },
+    "chronic_flag": {
+      "allowed": [
+        0,
+        1
+      ]
+    },
+    "gender": {
+      "allowed": [
+        "F",
+        "M"
+      ]
+    },
+    "visit_type": {
+      "allowed": [
+        "ER",
+        "ICU",
+        "OPD"
+      ]
+    },
+    "visit_month": {
+      "min": 1,
+      "max": 12
+    },
+    "insurer_rejection_rate": {
+      "min": 0.0,
+      "max": 1.0
+    }
+  }
+}

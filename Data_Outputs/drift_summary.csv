@@ -1,0 +1,13 @@
+feature,psi,drift_flag,train_mean,test_mean,mean_shift_pct
+days_since_registration,1.2785,YES,40.0188,150.1544,275.21
+payment_days,0.004,NO,13.0496,13.0422,-0.06
+billed_amount,0.003,NO,20794.5166,21175.721,1.83
+log_billed_amount,0.003,NO,9.6741,9.6844,0.11
+age,0.0021,NO,44.693,45.0698,0.84
+length_of_stay_hours,0.0021,NO,19.5827,19.427,-0.8
+los_vs_dept_avg,0.002,NO,1.0016,0.9937,-0.79
+bill_per_los_hour,0.002,NO,2760.6444,2610.5792,-5.44
+dept_avg_los,0.0014,NO,19.5521,19.5493,-0.01
+insurer_rejection_rate,0.0013,NO,0.1519,0.1519,0.04
+patient_avg_los,0.001,NO,19.5385,19.6038,0.33
+patient_visit_freq,0.0004,NO,5.9619,5.9568,-0.09
