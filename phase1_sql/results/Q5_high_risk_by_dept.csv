@@ -1,4 +1,4 @@
-department,total_visits,high_risk,high_risk_pct
+department,total_visits,high_risk_visits,high_risk_pct
 ICU,4064,845,20.79
 ER,4220,872,20.66
 Neurology,4165,846,20.31

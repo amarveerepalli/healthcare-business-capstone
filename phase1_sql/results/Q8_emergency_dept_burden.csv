@@ -1,7 +1,5 @@
-department,er_visits,avg_los,avg_billed
-ER,1433,19.34,20595.0
-Cardiology,1421,19.58,20894.4
-Neurology,1417,19.69,21035.36
-General,1413,19.63,20984.3
-Orthopedics,1390,19.33,21041.11
-ICU,1308,18.82,20637.99
+insurance_provider,avg_payment_days,paid_claims
+HealthPlus,12.6,3544
+SecureLife,12.5,3491
+MediCareX,12.5,3768
+CareOne,12.5,3678

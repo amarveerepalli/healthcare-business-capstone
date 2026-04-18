@@ -1,0 +1,4 @@
+column,mild_outliers,extreme_outliers
+billed_amount,369,4
+length_of_stay_hours,256,0
+payment_days,490,19
