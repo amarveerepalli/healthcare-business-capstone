@@ -1,0 +1,185 @@
+{
+  "api_version": "1.0.0",
+  "generated_at": "2026-04-18T18:44:07.155940",
+  "endpoints": {
+    "GET /health": {
+      "description": "Service liveness check \u2014 confirms API is running and both models are loaded",
+      "method": "GET",
+      "request": {
+        "note": "No request body required. Send a plain GET request.",
+        "curl_example": "curl -X GET http://localhost:8000/health"
+      },
+      "response_200": {
+        "status": "healthy",
+        "model_version": "1.0.0",
+        "timestamp": "2026-04-18T08:04:18.000000",
+        "models_loaded": {
+          "model_a": true,
+          "model_b": true
+        }
+      },
+      "response_503": {
+        "detail": "Model A failed to load \u2014 check model path and joblib file integrity"
+      }
+    },
+    "POST /predict/risk": {
+      "description": "Predict patient visit risk level (High / Medium / Low)",
+      "sample_request": {
+        "age": 58,
+        "gender": "M",
+        "city": "Hyderabad",
+        "chronic_flag": 1,
+        "department": "Cardiology",
+        "visit_type": "ER",
+        "length_of_stay_hours": 24.5,
+        "visit_month": 6,
+        "visit_dayofweek": 2,
+        "is_weekend": 0,
+        "patient_visit_freq": 4,
+        "patient_avg_los": 18.3,
+        "dept_avg_los": 20.1,
+        "los_vs_dept_avg": 1.22,
+        "days_since_registration": 365
+      },
+      "sample_response": {
+        "visit_risk": "Medium",
+        "confidence": {
+          "High": 0.3057,
+          "Low": 0.3229,
+          "Medium": 0.3714
+        },
+        "model_version": "1.0.0",
+        "prediction_id": "ddea525f6dcb4378",
+        "timestamp": "2026-04-18T18:44:07.097541"
+      },
+      "error_422": {
+        "detail": [
+          {
+            "loc": [
+              "body",
+              "age"
+            ],
+            "msg": "value must be <= 130",
+            "type": "value_error.number.not_le"
+          }
+        ]
+      },
+      "error_500": {
+        "detail": "Model prediction failed: <error message>"
+      }
+    },
+    "POST /predict/claim": {
+      "description": "Predict insurance claim outcome (Paid / Pending / Rejected)",
+      "sample_request": {
+        "age": 45,
+        "gender": "F",
+        "city": "Chennai",
+        "chronic_flag": 0,
+        "department": "Orthopedics",
+        "visit_type": "OPD",
+        "length_of_stay_hours": 6.0,
+        "billed_amount": 25000.0,
+        "log_billed_amount": 10.13,
+        "insurance_provider": "HealthPlus",
+        "insurer_rejection_rate": 0.15,
+        "visit_month": 3,
+        "visit_dayofweek": 1,
+        "is_weekend": 0,
+        "patient_visit_freq": 2,
+        "bill_per_los_hour": 4166.67,
+        "payment_days_missing": 1
+      },
+      "sample_response": {
+        "claim_outcome": "Rejected",
+        "confidence": {
+          "Paid": 0.2969,
+          "Pending": 0.2876,
+          "Rejected": 0.4155
+        },
+        "revenue_risk_flag": true,
+        "model_version": "1.0.0",
+        "prediction_id": "15ae7bd4545a2a2b",
+        "timestamp": "2026-04-18T18:44:07.102220"
+      },
+      "error_422": {
+        "detail": [
+          {
+            "loc": [
+              "body",
+              "insurer_rejection_rate"
+            ],
+            "msg": "value must be <= 1.0",
+            "type": "value_error.number.not_le"
+          }
+        ]
+      },
+      "error_500": {
+        "detail": "Model prediction failed: <error message>"
+      }
+    }
+  },
+  "schema_validation_rules": {
+    "risk": {
+      "age": {
+        "type": "int",
+        "min": 0,
+        "max": 130
+      },
+      "gender": {
+        "type": "str",
+        "allowed": [
+          "M",
+          "F",
+          "Other"
+        ]
+      },
+      "chronic_flag": {
+        "type": "int",
+        "allowed": [
+          0,
+          1
+        ]
+      },
+      "length_of_stay_hours": {
+        "type": "float",
+        "min": 0
+      },
+      "visit_month": {
+        "type": "int",
+        "min": 1,
+        "max": 12
+      }
+    },
+    "claim": {
+      "age": {
+        "type": "int",
+        "min": 0,
+        "max": 130
+      },
+      "gender": {
+        "type": "str",
+        "allowed": [
+          "M",
+          "F",
+          "Other"
+        ]
+      },
+      "billed_amount": {
+        "type": "float",
+        "min": 0
+      },
+      "insurer_rejection_rate": {
+        "type": "float",
+        "min": 0.0,
+        "max": 1.0
+      },
+      "payment_days_missing": {
+        "type": "int",
+        "allowed": [
+          0,
+          1
+        ]
+      }
+    }
+  }
+}

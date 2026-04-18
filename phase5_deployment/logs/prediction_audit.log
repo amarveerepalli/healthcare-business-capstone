@@ -1,0 +1,2 @@
+2026-04-19 00:14:07,122 | {"endpoint": "/predict/risk", "prediction_id": "ddea525f6dcb4378", "prediction": "Medium", "model_version": "1.0.0", "timestamp": "2026-04-18T18:44:07.097541", "input_hash": "d21bc2fa2d8925bc100c6277b818dfc3"}
+2026-04-19 00:14:07,122 | {"endpoint": "/predict/claim", "prediction_id": "15ae7bd4545a2a2b", "prediction": "Rejected", "model_version": "1.0.0", "timestamp": "2026-04-18T18:44:07.102220", "input_hash": "d797b6da851ca00bd695a066ef4fae80"}
